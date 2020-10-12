@@ -25,10 +25,12 @@ let numberOfChoices = 4;
 
 // Base Game Logic
 const gameLoop = () => {
-
+  
   // Get computer move
   getComputerMove();
   console.log(computerMoves)
+
+  generateBoard();
 
   // Play computer moves
   computerReplay(0)
@@ -38,18 +40,37 @@ const gameLoop = () => {
 
 }
 
+const generateBoard = () => {
+  
+  $('#game').empty();
+  for (let i = 0; i < numberOfChoices; i++) {
+    let $colorButton = $('<div>')
+    $colorButton.addClass('colorButton')
+    $colorButton.attr('id', i) // Identify which button is which. The internal logic doesn't care about the colors, that will all be done with CSS
+
+    $('#game').append($colorButton)
+  }
+  
+  $('#game')
+}
+
 // Randomly select computer move
 const getComputerMove = () => {
-  computerMoves.push(Math.ceil(Math.random() * numberOfChoices))
+  computerMoves.push(Math.floor(Math.random() * numberOfChoices))
 }
 
 // Replay computer pattern
 const computerReplay = (move) => {
+  $('#startGame').prop('disabled', false)
   if (move < computerMoves.length) {
-    $('#game').append(`<div>${computerMoves[move]}</div>`)
+    $(`#${computerMoves[move]}`).empty()
+    $(`#${computerMoves[move]}`).text(move)
+    $(`#${computerMoves[move]}`).append(`<div>${computerMoves[move]}</div>`)
     setTimeout(() => {
       computerReplay(move + 1)
     }, 500)
+
+    $('#startGame').prop('disabled', true)
   }
 }
 
