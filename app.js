@@ -23,7 +23,8 @@
 let computerMoves = [];
 let numberOfChoices = 4;
 let currentTurn = 0;
-let colorsArray = ['red', 'yellow', 'blue', 'green', 'orange', 'indigo', 'purple']
+// Initial set of colors from flatuicolors.com
+let colorsArray = ['#e74c3c', '#f1c40f', '#2980b9', '#27ae60', '#d35400', '#34495e', '#8e44ad']
 let isComputerTurn = false;
 
 // Base Game Logic
@@ -75,8 +76,11 @@ const computerReplay = (move) => {
     // Found information about the CSS brightness filter (as well as opacity) and its use without preprocessors here: https://stackoverflow.com/questions/1625681/dynamically-change-color-to-lighter-or-darker-by-percentage-css-javascript
 
     $(`#${computerMoves[move]}`).css('filter', 'brightness(50%)')
+    $(`#${computerMoves[move]}`).css('border', '2px solid black')
     setTimeout(() => {
       $(`#${computerMoves[move]}`).css('filter', 'brightness(100%)')
+      $(`#${computerMoves[move]}`).css('border', 'none')
+
     }, 350)
     setTimeout(() => {
       computerReplay(move + 1)

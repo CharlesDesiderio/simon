@@ -5,6 +5,7 @@
   width: 50px;
   color: white;
   box-sizing: border-box;
+  border-radius: 50%;
 }
 
 .colorButton:hover {
