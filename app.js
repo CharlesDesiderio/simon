@@ -24,22 +24,24 @@ let computerMoves = [];
 let numberOfChoices = 4;
 let currentTurn = 0;
 let colorsArray = ['red', 'yellow', 'blue', 'green', 'orange', 'indigo', 'purple']
+let isComputerTurn = false;
 
 // Base Game Logic
 const gameLoop = () => {
-  $('#start').css('display', 'none')
-  $('#message').empty()
+  $('#start').css('display', 'none') // Hide 'Start Game' button
+  $('#message').empty() // Clear any previous 'Game Over' message
+
   // Get computer move
   getComputerMove();
-  console.log(computerMoves)
+  console.log(computerMoves) // Remove this line for completed version; it shows the computer move list in the console.
 
+  // Create the game board. Uses numberOfChoices to determine game size.
   generateBoard();
 
-  // Play computer moves
+  // Replay computer moves for player to copy.
   computerReplay(0)
 
-  // Wait for player input. Each button should have an event listener which passes target id to compare against computer move.
-  // playerRepeat()
+  // Event handlers on squares will handle the logic for tracking the player move and will restart the game loop when the player matches all the correct moves.
 
 }
 
@@ -65,8 +67,10 @@ const getComputerMove = () => {
 
 // Replay computer pattern
 const computerReplay = (move) => {
-  // $('#startGame').prop('disabled', false)
   if (move < computerMoves.length) {
+    // Disable input event handlers on computer replay.
+    // Use a flag variable like 'isComputerTurn' and set true in else statement and have a check in the on 'choice' function?
+    isComputerTurn = true;
 
     // Found information about the CSS brightness filter (as well as opacity) and its use without preprocessors here: https://stackoverflow.com/questions/1625681/dynamically-change-color-to-lighter-or-darker-by-percentage-css-javascript
 
@@ -74,19 +78,19 @@ const computerReplay = (move) => {
     setTimeout(() => {
       $(`#${computerMoves[move]}`).css('filter', 'brightness(100%)')
     }, 350)
-    $(`#${computerMoves[move]}`).empty()
-    // $(`#${computerMoves[move]}`).text(move)
-    // $(`#${computerMoves[move]}`).append(`<div>${computerMoves[move]}</div>`)
     setTimeout(() => {
       computerReplay(move + 1)
     }, 600)
-
-    // $('#startGame').prop('disabled', true)
+  } else {
+    isComputerTurn = false
   }
 }
 
 // Manage input from player on color square click
 const choice = (event) => {
+  if (isComputerTurn === true) {
+    return;
+  }
   console.log($(event.currentTarget).attr('id'))
   if (parseInt($(event.currentTarget).attr('id')) === computerMoves[currentTurn]) {
     console.log(`yes! turn ${currentTurn}`)
@@ -106,8 +110,8 @@ const choice = (event) => {
 }
 
 const resetGame = () => {
-computerMoves = [];
-currentTurn = 0;
+  computerMoves = [];
+  currentTurn = 0;
 }
 
 $(() => {
