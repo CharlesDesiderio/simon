@@ -23,11 +23,12 @@
 let computerMoves = [];
 let numberOfChoices = 4;
 let currentTurn = 0;
-let colorsArray = ['red', 'yellow', 'blue', 'green']
+let colorsArray = ['red', 'yellow', 'blue', 'green', 'orange', 'indigo', 'purple']
 
 // Base Game Logic
 const gameLoop = () => {
-  
+  $('#start').css('display', 'none')
+  $('#message').empty()
   // Get computer move
   getComputerMove();
   console.log(computerMoves)
@@ -64,20 +65,23 @@ const getComputerMove = () => {
 
 // Replay computer pattern
 const computerReplay = (move) => {
-  $('#startGame').prop('disabled', false)
+  // $('#startGame').prop('disabled', false)
   if (move < computerMoves.length) {
+
+    // Found information about the CSS brightness filter (as well as opacity) and its use without preprocessors here: https://stackoverflow.com/questions/1625681/dynamically-change-color-to-lighter-or-darker-by-percentage-css-javascript
+
     $(`#${computerMoves[move]}`).css('filter', 'brightness(50%)')
     setTimeout(() => {
       $(`#${computerMoves[move]}`).css('filter', 'brightness(100%)')
     }, 350)
     $(`#${computerMoves[move]}`).empty()
-    $(`#${computerMoves[move]}`).text(move)
-    $(`#${computerMoves[move]}`).append(`<div>${computerMoves[move]}</div>`)
+    // $(`#${computerMoves[move]}`).text(move)
+    // $(`#${computerMoves[move]}`).append(`<div>${computerMoves[move]}</div>`)
     setTimeout(() => {
       computerReplay(move + 1)
     }, 600)
 
-    $('#startGame').prop('disabled', true)
+    // $('#startGame').prop('disabled', true)
   }
 }
 
@@ -90,12 +94,20 @@ const choice = (event) => {
     if (currentTurn === computerMoves.length) {
       console.log('end of turns')
       currentTurn = 0;
+      gameLoop();
     }
   } else {
     console.log(`you lose ${currentTurn}`)
     // Reset game here!
-
+    resetGame()
+    $('#message').html('<h1>Game Over</h1>')
+    $('#start').css('display', 'block')
   }
+}
+
+const resetGame = () => {
+computerMoves = [];
+currentTurn = 0;
 }
 
 $(() => {
