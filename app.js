@@ -23,6 +23,7 @@
 let computerMoves = [];
 let numberOfChoices = 4;
 let currentTurn = 0;
+let colorsArray = ['red', 'yellow', 'blue', 'green']
 
 // Base Game Logic
 const gameLoop = () => {
@@ -47,6 +48,7 @@ const generateBoard = () => {
   for (let i = 0; i < numberOfChoices; i++) {
     let $colorButton = $('<div>')
     $colorButton.addClass('colorButton')
+    $colorButton.css('background-color', colorsArray[i])
     $colorButton.attr('id', i) // Identify which button is which. The internal logic doesn't care about the colors, that will all be done with CSS
     $colorButton.on('click', choice)
     $('#game').append($colorButton)
@@ -64,12 +66,16 @@ const getComputerMove = () => {
 const computerReplay = (move) => {
   $('#startGame').prop('disabled', false)
   if (move < computerMoves.length) {
+    $(`#${computerMoves[move]}`).css('filter', 'brightness(50%)')
+    setTimeout(() => {
+      $(`#${computerMoves[move]}`).css('filter', 'brightness(100%)')
+    }, 350)
     $(`#${computerMoves[move]}`).empty()
     $(`#${computerMoves[move]}`).text(move)
     $(`#${computerMoves[move]}`).append(`<div>${computerMoves[move]}</div>`)
     setTimeout(() => {
       computerReplay(move + 1)
-    }, 500)
+    }, 600)
 
     $('#startGame').prop('disabled', true)
   }
