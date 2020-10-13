@@ -22,6 +22,7 @@
 
 let computerMoves = [];
 let numberOfChoices = 4;
+let currentTurn = 0;
 
 // Base Game Logic
 const gameLoop = () => {
@@ -36,7 +37,7 @@ const gameLoop = () => {
   computerReplay(0)
 
   // Wait for player input. Each button should have an event listener which passes target id to compare against computer move.
-
+  // playerRepeat()
 
 }
 
@@ -47,7 +48,7 @@ const generateBoard = () => {
     let $colorButton = $('<div>')
     $colorButton.addClass('colorButton')
     $colorButton.attr('id', i) // Identify which button is which. The internal logic doesn't care about the colors, that will all be done with CSS
-
+    $colorButton.on('click', choice)
     $('#game').append($colorButton)
   }
   
@@ -74,6 +75,22 @@ const computerReplay = (move) => {
   }
 }
 
+// Manage input from player on color square click
+const choice = (event) => {
+  console.log($(event.currentTarget).attr('id'))
+  if (parseInt($(event.currentTarget).attr('id')) === computerMoves[currentTurn]) {
+    console.log(`yes! turn ${currentTurn}`)
+    currentTurn++;
+    if (currentTurn === computerMoves.length) {
+      console.log('end of turns')
+      currentTurn = 0;
+    }
+  } else {
+    console.log(`you lose ${currentTurn}`)
+    // Reset game here!
+
+  }
+}
 
 $(() => {
 
