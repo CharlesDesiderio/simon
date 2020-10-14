@@ -133,3 +133,7 @@ $(() => {
   $('#startGame').on('click', gameLoop)
 
 })
+
+
+// Mainly for future reference: https://stackoverflow.com/questions/12813573/position-icons-into-circle and http://jsfiddle.net/ThiefMaster/LPh33/4/
+// Dynamically generate a ring of elements. This is something I may come back to for my stretch goal.
