@@ -53,6 +53,8 @@ const generateBoard = () => {
   
   $('#game').empty();
   for (let i = 0; i < numberOfChoices; i++) {
+    let $bgDiv = $('<div>')
+    $bgDiv.addClass('bg-div')
     let $colorButton = $('<div>')
     $colorButton.addClass('colorButton')
     
@@ -64,7 +66,8 @@ const generateBoard = () => {
     }
     $colorButton.attr('id', i) // Identify which button is which. The internal logic doesn't care about the colors, that will all be done with CSS
     $colorButton.on('click', choice)
-    $('#game').append($colorButton)
+    $($bgDiv).append($colorButton)
+    $('#game').append($bgDiv)
   }
   
   $('#game')
