@@ -20,11 +20,14 @@
 // Player repeats sequence (game play loop ends here, go back to success/fail condition)
 
 
+// '#003DB5', '#C30110', '#E4B522', '#108047'
+
 let computerMoves = [];
 let numberOfChoices = 4;
 let currentTurn = 0;
+let colorsArray = ['#003DB5', '#C30110', '#108047', '#E4B522']
 // Initial set of colors from flatuicolors.com
-let colorsArray = ['#e74c3c', '#f1c40f', '#2980b9', '#27ae60', '#d35400', '#34495e', '#8e44ad']
+// let colorsArray = ['#e74c3c', '#f1c40f', '#2980b9', '#27ae60', '#d35400', '#34495e', '#8e44ad']
 let isComputerTurn = false;
 
 // Base Game Logic
