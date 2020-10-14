@@ -52,7 +52,13 @@ const generateBoard = () => {
   for (let i = 0; i < numberOfChoices; i++) {
     let $colorButton = $('<div>')
     $colorButton.addClass('colorButton')
-    $colorButton.css('background-color', colorsArray[i])
+    
+    // Chose a color from array of colors, If there are more buttons than colors, pick a random color
+    if (i < colorsArray.length) {
+      $colorButton.css('background-color', colorsArray[i])
+    } else {
+      $colorButton.css('background-color', `rgba(${randomColor()}, ${randomColor()}, ${randomColor()})`)
+    }
     $colorButton.attr('id', i) // Identify which button is which. The internal logic doesn't care about the colors, that will all be done with CSS
     $colorButton.on('click', choice)
     $('#game').append($colorButton)
@@ -111,6 +117,10 @@ const choice = (event) => {
     $('#message').html('<h1>Game Over</h1>')
     $('#start').css('display', 'block')
   }
+}
+
+const randomColor = () => {
+  return Math.floor(Math.random() * 256)
 }
 
 const resetGame = () => {
