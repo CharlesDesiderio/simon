@@ -139,7 +139,7 @@ const resetGame = () => {
 
 $(() => {
 
-  $('#startGame').on('click', gameLoop)
+  $('#startGame').on('click', gameLoop) 
 
 })
 

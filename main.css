@@ -116,8 +116,8 @@ body {
   transform: rotate(-35deg);
 }
 
-#startGame:hover {
-  
+#startGame button:hover {
+  background-color: black;
 }
 
 .arrow-box {
@@ -132,4 +132,24 @@ body {
 .arrows-middle {
   display: flex;
   flex-direction: row;
+}
+
+.label {
+  position: absolute;
+  left: 100px;
+  width: 50%;
+  top: 20px;
+  font-size: 1.5rem;
+  color: #7e8086;
+}
+
+.famicomImage {
+  float: left;
+  width: 60px;
+  margin: 10px;
+}
+
+.superFamicomSpan {
+  font-size: 1rem;
+
 }
