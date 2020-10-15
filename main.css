@@ -170,6 +170,22 @@ body {
 }
 
 #score {
-  width: 200px;
-  height: 200px;
+  width: 150px;
+  height: 300px;
+  padding: .5rem;
+  border-radius: 20px;
+  border: 5px solid white;
+  background: linear-gradient(#5C5CB9, #00001F);
+  color: white;
+  text-align: center;
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 1.2rem;
+}
+
+.screen {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 600px;
+  margin: auto;
 }

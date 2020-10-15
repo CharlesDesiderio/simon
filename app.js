@@ -79,6 +79,19 @@ const generateBoard = () => {
   $('#game').children().eq(3).css('border-radius', '0 0 50% 50%')
 }
 
+const buildScores = () => {
+  $('#score').empty()
+  $('#score').html(`<h3>High Scores:</h3>`)
+  if (scoresArr.length > 10) {
+    scoresArr = scoresArr.sort((a, b) => b - a).slice(0, 10)
+  }
+  scoresArr.sort((a, b) => b - a).map((currentScore) => {
+    console.log(currentScore)
+    $('#score').append(`${currentScore} <br />`)
+  })
+
+}
+
 // Randomly select computer move
 const getComputerMove = () => {
   computerMoves.push(Math.floor(Math.random() * numberOfChoices))
@@ -132,12 +145,9 @@ const choice = (event) => {
     if (score > 0) scoresArr.push(score)
 
     // Sort scores descending and display them
-    $('#score').empty()
-    scoresArr.sort((a, b) => b - a).map((currentScore) => {
-      console.log(currentScore)
-      $('#score').append(`${currentScore} <br />`)
-  
-    })
+    
+    buildScores()
+    
 
     resetGame()
     $('#start').css('display', 'block')
@@ -153,6 +163,8 @@ const resetGame = () => {
   currentTurn = 0;
   score = 0;
 }
+
+buildScores()
 
 $(() => {
 
