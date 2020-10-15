@@ -29,7 +29,7 @@ let colorsArray = ['#003DB5', '#C30110', '#108047', '#E4B522']
 // Initial set of colors from flatuicolors.com
 // let colorsArray = ['#e74c3c', '#f1c40f', '#2980b9', '#27ae60', '#d35400', '#34495e', '#8e44ad']
 let isComputerTurn = false;
-let scoresArr = [];
+let scoresArr = localStorage.getItem('localHighScores') || [];
 let score = 0;
 
 // Base Game Logic
@@ -85,6 +85,7 @@ const buildScores = () => {
   if (scoresArr.length > 10) {
     scoresArr = scoresArr.sort((a, b) => b - a).slice(0, 10)
   }
+  if (typeof scoresArr === "string") scoresArr = scoresArr.split(",")
   scoresArr.sort((a, b) => b - a).map((currentScore) => {
     console.log(currentScore)
     $('#score').append(`${currentScore} <br />`)
@@ -143,7 +144,7 @@ const choice = (event) => {
     
     // Add score to array.
     if (score > 0) scoresArr.push(score)
-
+    localStorage.setItem('localHighScores', scoresArr)
     // Sort scores descending and display them
     
     buildScores()
