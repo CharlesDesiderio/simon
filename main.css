@@ -5,7 +5,6 @@
 body {
   font-family: 'Days One', sans-serif;
   padding-top: 1rem;
-
 }
 
 .controller {
@@ -65,7 +64,7 @@ body {
   color: white;
   box-sizing: border-box;
   border-radius: 50%;
-  box-shadow: -3px 0px 0 gray;
+  box-shadow: -3px 0px 0 ;
 }
 
 .colorButton:hover {
@@ -157,22 +156,24 @@ body {
 }
 
 #message {
-  height: 300px;
+  height: 50px;
   width: 400px;
   border: 5px solid white;
   background: linear-gradient(#5C5CB9, #00001F);
   border-radius: 20px;
   margin: auto;
-  margin-bottom: 2rem;
+  
   font-family: 'Share Tech Mono', monospace;
   padding: .5rem;
   font-size: .5rem;
   color: white;
 }
 
+
+
 #score {
   width: 150px;
-  height: 300px;
+  height: 100%;
   padding: .5rem;
   border-radius: 20px;
   border: 5px solid white;
@@ -181,6 +182,8 @@ body {
   text-align: center;
   font-family: 'Share Tech Mono', monospace;
   font-size: 1.2rem;
+  margin-left: .5rem;
+  
 }
 
 .screen {
@@ -189,4 +192,21 @@ body {
   justify-content: space-between;
   width: 600px;
   margin: auto;
+  margin-bottom: 2rem;
+}
+
+.leftScreen {
+  height: 300px;
+  
+}
+
+#computerMoveDisplay {
+  margin-top: .5rem;
+  padding: .5rem;
+  height: 230px;
+  border-radius: 20px;
+  border: 5px solid white;
+  background: linear-gradient(#5C5CB9, #00001F);
+  color: white;
+
 }

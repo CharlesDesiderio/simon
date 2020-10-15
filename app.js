@@ -76,6 +76,7 @@ const generateBoard = () => {
     }
     $colorButton.attr('id', i) // Identify which button is which. The internal logic doesn't care about the colors, that will all be done with CSS
     $colorButton.on('click', choice)
+    //$colorButton.css('box-shadow', `-3px 0px 0 ${}`) //box-shadow: -3px 0px 0 gray;
     $($bgDiv).append($colorButton)
     $('#game').append($bgDiv)
   }
@@ -89,10 +90,10 @@ const generateBoard = () => {
 const buildScores = () => {
   $('#score').empty()
   $('#score').html(`<h3>High Scores:</h3>`)
+  if (typeof scoresArr === "string") scoresArr = scoresArr.split(",")
   if (scoresArr.length > 10) {
     scoresArr = scoresArr.sort((a, b) => b - a).slice(0, 10)
   }
-  if (typeof scoresArr === "string") scoresArr = scoresArr.split(",")
   scoresArr.sort((a, b) => b - a).map((currentScore) => {
     console.log(currentScore)
     $('#score').append(`${currentScore} <br />`)
@@ -132,6 +133,7 @@ const computerReplay = (move) => {
 
 // Manage input from player on color square click
 const choice = (event) => {
+
   if (isComputerTurn === true) {
     return;
   }
@@ -150,7 +152,7 @@ const choice = (event) => {
     console.log(`you lose ${currentTurn}`)
     // Reset game here!
     $('#message').html(`<h1>Game Over. Score: ${score}</h1>`)
-    
+    $('#game').empty()
     // Add score to array.
     if (score > 0) scoresArr.push(score)
     localStorage.setItem('localHighScores', scoresArr)
@@ -172,6 +174,7 @@ const resetGame = () => {
   computerMoves = [];
   currentTurn = 0;
   score = 0;
+  awaitPlayer = false;
 }
 
 buildScores()
