@@ -32,7 +32,7 @@ let isComputerTurn = false;
 
 // Base Game Logic
 const gameLoop = () => {
-  $('#start').css('display', 'none') // Hide 'Start Game' button
+  // $('#start').css('display', 'none') // Hide 'Start Game' button
   $('#message').empty() // Clear any previous 'Game Over' message
 
   // Get computer move
