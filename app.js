@@ -29,6 +29,8 @@ let colorsArray = ['#003DB5', '#C30110', '#108047', '#E4B522']
 // Initial set of colors from flatuicolors.com
 // let colorsArray = ['#e74c3c', '#f1c40f', '#2980b9', '#27ae60', '#d35400', '#34495e', '#8e44ad']
 let isComputerTurn = false;
+let scoresArr = [];
+let score = 0;
 
 // Base Game Logic
 const gameLoop = () => {
@@ -51,6 +53,7 @@ const gameLoop = () => {
 
 const generateBoard = () => {
   
+
   $('#game').empty();
   for (let i = 0; i < numberOfChoices; i++) {
     let $bgDiv = $('<div>')
@@ -116,14 +119,27 @@ const choice = (event) => {
     currentTurn++;
     if (currentTurn === computerMoves.length) {
       console.log('end of turns')
+      score++;
       currentTurn = 0;
       gameLoop();
     }
   } else {
     console.log(`you lose ${currentTurn}`)
     // Reset game here!
+    $('#message').html(`<h1>Game Over. Score: ${score}</h1>`)
+    
+    // Add score to array.
+    if (score > 0) scoresArr.push(score)
+
+    // Sort scores descending and display them
+    $('#score').empty()
+    scoresArr.sort((a, b) => b - a).map((currentScore) => {
+      console.log(currentScore)
+      $('#score').append(`${currentScore} <br />`)
+  
+    })
+
     resetGame()
-    $('#message').html('<h1>Game Over</h1>')
     $('#start').css('display', 'block')
   }
 }
@@ -135,11 +151,16 @@ const randomColor = () => {
 const resetGame = () => {
   computerMoves = [];
   currentTurn = 0;
+  score = 0;
 }
 
 $(() => {
 
-  $('#startGame').on('click', gameLoop) 
+  $('#startGame').on('click', () => {
+    $('#message').append('Game Start!')
+    
+    gameLoop()
+  }) 
 
 })
 

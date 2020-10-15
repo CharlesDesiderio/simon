@@ -1,9 +1,11 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Days+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
 
 body {
   font-family: 'Days One', sans-serif;
-  padding-top: 5rem;
+  padding-top: 1rem;
+
 }
 
 .controller {
@@ -35,7 +37,6 @@ body {
   align-items: center;
   justify-items: center;
 }
-
 
 #game {
   border: 1px solid #444;
@@ -152,4 +153,23 @@ body {
 .superFamicomSpan {
   font-size: 1rem;
 
+}
+
+#message {
+  height: 300px;
+  width: 400px;
+  border: 5px solid white;
+  background: linear-gradient(#5C5CB9, #00001F);
+  border-radius: 20px;
+  margin: auto;
+  margin-bottom: 2rem;
+  font-family: 'Share Tech Mono', monospace;
+  padding: .5rem;
+  font-size: .5rem;
+  color: white;
+}
+
+#score {
+  width: 200px;
+  height: 200px;
 }
