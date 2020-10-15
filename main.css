@@ -29,24 +29,25 @@
 }
 
 #game {
-  width: 250px;
-  height: 250px;
+  width: 200px;
+  height: 200px;
   margin: auto;
   display: grid;
+  column-gap: 1.5rem;
   /* Grid refresher course courtsey of CSS Tricks: https://css-tricks.com/snippets/css/complete-guide-grid/ */
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr 1fr;
   align-items: center;
   justify-items: center;
-  transform: rotate(45deg);
+  transform: rotate(47deg);
   background-color: #7e8086;
   border-radius: 50%;
-  padding: 2rem;
+  padding: 4rem;
 }
 
 .colorButton {
   padding: 2rem;
-  margin: 2rem;
+  margin: 1rem;
   background-color: slateblue;
   /* height: 70px;
   width: 70px; */
@@ -63,6 +64,12 @@
 }
 
 .bg-div {
-  background-color: pink;
+  display: grid;
+  align-items: center;
+  justify-items: center;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background-color: #c7c8cc;
   margin: 0;
 }

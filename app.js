@@ -70,7 +70,10 @@ const generateBoard = () => {
     $('#game').append($bgDiv)
   }
   
-  $('#game')
+  $('#game').children().eq(0).css('border-radius', '50% 50% 0 0')
+  $('#game').children().eq(1).css('border-radius', '50% 50% 0 0')
+  $('#game').children().eq(2).css('border-radius', '0 0 50% 50%')
+  $('#game').children().eq(3).css('border-radius', '0 0 50% 50%')
 }
 
 // Randomly select computer move
@@ -88,10 +91,10 @@ const computerReplay = (move) => {
     // Found information about the CSS brightness filter (as well as opacity) and its use without preprocessors here: https://stackoverflow.com/questions/1625681/dynamically-change-color-to-lighter-or-darker-by-percentage-css-javascript
 
     $(`#${computerMoves[move]}`).css('filter', 'brightness(50%)')
-    $(`#${computerMoves[move]}`).css('border', '2px solid black')
+    // $(`#${computerMoves[move]}`).css('border', '2px solid black')
     setTimeout(() => {
       $(`#${computerMoves[move]}`).css('filter', 'brightness(100%)')
-      $(`#${computerMoves[move]}`).css('border', 'none')
+      // $(`#${computerMoves[move]}`).css('border', 'none')
 
     }, 350)
     setTimeout(() => {
@@ -137,6 +140,8 @@ const resetGame = () => {
 $(() => {
 
   $('#startGame').on('click', gameLoop)
+
+  gameLoop()
 
 })
 
