@@ -141,8 +141,6 @@ $(() => {
 
   $('#startGame').on('click', gameLoop)
 
-  gameLoop()
-
 })
 
 
