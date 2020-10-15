@@ -31,11 +31,18 @@ let colorsArray = ['#003DB5', '#C30110', '#108047', '#E4B522']
 let isComputerTurn = false;
 let scoresArr = localStorage.getItem('localHighScores') || [];
 let score = 0;
+let awaitPlayer = false;
 
 // Base Game Logic
 const gameLoop = () => {
+
+  if (awaitPlayer === true) {
+    return;
+  }
   // $('#start').css('display', 'none') // Hide 'Start Game' button
   $('#message').empty() // Clear any previous 'Game Over' message
+
+  $('#message').html(`<h1>Game start!</h1>`)
 
   // Get computer move
   getComputerMove();
@@ -119,6 +126,7 @@ const computerReplay = (move) => {
     }, 600)
   } else {
     isComputerTurn = false
+    awaitPlayer = true;
   }
 }
 
@@ -135,6 +143,7 @@ const choice = (event) => {
       console.log('end of turns')
       score++;
       currentTurn = 0;
+      awaitPlayer = false;
       gameLoop();
     }
   } else {
@@ -170,7 +179,6 @@ buildScores()
 $(() => {
 
   $('#startGame').on('click', () => {
-    $('#message').append('Game Start!')
     
     gameLoop()
   }) 

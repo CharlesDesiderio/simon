@@ -65,6 +65,7 @@ body {
   color: white;
   box-sizing: border-box;
   border-radius: 50%;
+  box-shadow: -3px 0px 0 gray;
 }
 
 .colorButton:hover {
