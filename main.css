@@ -162,7 +162,7 @@ body {
   background: linear-gradient(#5C5CB9, #00001F);
   border-radius: 20px;
   margin: auto;
-  
+  text-align: center;
   font-family: 'Share Tech Mono', monospace;
   padding: .5rem;
   font-size: .5rem;
@@ -208,5 +208,15 @@ body {
   border: 5px solid white;
   background: linear-gradient(#5C5CB9, #00001F);
   color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 3rem;
 
+}
+
+.displayIcon {
+  height: 100px;
+  width: 100px;
+  border-radius: 50%;
 }

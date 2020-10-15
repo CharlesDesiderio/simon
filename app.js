@@ -95,7 +95,7 @@ const buildScores = () => {
     scoresArr = scoresArr.sort((a, b) => b - a).slice(0, 10)
   }
   scoresArr.sort((a, b) => b - a).map((currentScore) => {
-    console.log(currentScore)
+    // console.log(currentScore)
     $('#score').append(`${currentScore} <br />`)
   })
 
@@ -115,10 +115,20 @@ const computerReplay = (move) => {
 
     // Found information about the CSS brightness filter (as well as opacity) and its use without preprocessors here: https://stackoverflow.com/questions/1625681/dynamically-change-color-to-lighter-or-darker-by-percentage-css-javascript
 
-    $(`#${computerMoves[move]}`).css('filter', 'brightness(50%)')
+    // $(`#${computerMoves[move]}`).css('filter', 'brightness(50%)')
+    $('#computerMoveDisplay').empty()
+    const $displayIcon = $('<div>')
+    $displayIcon.addClass('displayIcon')
+    $displayIcon.attr('id', computerMoves[move])
+    $displayIcon.css('background-color', colorsArray[computerMoves[move]])
+    $('#computerMoveDisplay').append($displayIcon)
+
     // $(`#${computerMoves[move]}`).css('border', '2px solid black')
     setTimeout(() => {
-      $(`#${computerMoves[move]}`).css('filter', 'brightness(100%)')
+      $('#computerMoveDisplay').empty()
+      // $(`#${computerMoves[move]}`).css('filter', 'brightness(100%)')
+
+
       // $(`#${computerMoves[move]}`).css('border', 'none')
 
     }, 350)
@@ -137,7 +147,7 @@ const choice = (event) => {
   if (isComputerTurn === true) {
     return;
   }
-  console.log($(event.currentTarget).attr('id'))
+  // console.log($(event.currentTarget).attr('id'))
   if (parseInt($(event.currentTarget).attr('id')) === computerMoves[currentTurn]) {
     console.log(`yes! turn ${currentTurn}`)
     currentTurn++;
@@ -152,6 +162,7 @@ const choice = (event) => {
     console.log(`you lose ${currentTurn}`)
     // Reset game here!
     $('#message').html(`<h1>Game Over. Score: ${score}</h1>`)
+    $('#computerMoveDisplay').empty().append(`❌`)
     $('#game').empty()
     // Add score to array.
     if (score > 0) scoresArr.push(score)
@@ -182,7 +193,7 @@ buildScores()
 $(() => {
 
   $('#startGame').on('click', () => {
-    
+    isComputerTurn = true;
     gameLoop()
   }) 
 
