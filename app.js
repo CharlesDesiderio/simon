@@ -76,7 +76,6 @@ const generateBoard = () => {
     }
     $colorButton.attr('id', i) // Identify which button is which. The internal logic doesn't care about the colors, that will all be done with CSS
     $colorButton.on('click', choice)
-    //$colorButton.css('box-shadow', `-3px 0px 0 ${}`) //box-shadow: -3px 0px 0 gray;
     $($bgDiv).append($colorButton)
     $('#game').append($bgDiv)
   }
@@ -95,7 +94,6 @@ const buildScores = () => {
     scoresArr = scoresArr.sort((a, b) => b - a).slice(0, 10)
   }
   scoresArr.sort((a, b) => b - a).map((currentScore) => {
-    // console.log(currentScore)
     $('#score').append(`${currentScore} <br />`)
   })
 
@@ -115,7 +113,6 @@ const computerReplay = (move) => {
 
     // Found information about the CSS brightness filter (as well as opacity) and its use without preprocessors here: https://stackoverflow.com/questions/1625681/dynamically-change-color-to-lighter-or-darker-by-percentage-css-javascript
 
-    // $(`#${computerMoves[move]}`).css('filter', 'brightness(50%)')
     $('#computerMoveDisplay').empty()
     const $displayIcon = $('<div>')
     $displayIcon.addClass('displayIcon')
@@ -123,14 +120,8 @@ const computerReplay = (move) => {
     $displayIcon.css('background-color', colorsArray[computerMoves[move]])
     $('#computerMoveDisplay').append($displayIcon)
 
-    // $(`#${computerMoves[move]}`).css('border', '2px solid black')
     setTimeout(() => {
       $('#computerMoveDisplay').empty()
-      // $(`#${computerMoves[move]}`).css('filter', 'brightness(100%)')
-
-
-      // $(`#${computerMoves[move]}`).css('border', 'none')
-
     }, 350)
     setTimeout(() => {
       computerReplay(move + 1)
@@ -143,8 +134,6 @@ const computerReplay = (move) => {
 
 // Manage input from player on color square click
 const choice = (event) => {
-  
-  
   if (isComputerTurn === true) {
     return;
   }
@@ -169,9 +158,8 @@ const choice = (event) => {
     if (score > 0) scoresArr.push(score)
     localStorage.setItem('localHighScores', scoresArr)
     // Sort scores descending and display them
-    
+
     buildScores()
-    
 
     resetGame()
     $('#start').css('display', 'block')
@@ -192,12 +180,10 @@ const resetGame = () => {
 buildScores()
 
 $(() => {
-
   $('#startGame').on('click', () => {
     isComputerTurn = true;
     gameLoop()
   }) 
-
 })
 
 
