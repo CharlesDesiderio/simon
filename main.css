@@ -238,7 +238,7 @@ p {
 
 /* RESPONSIVE LAYOUT */
 
-@media (max-width: 400px) {
+@media (min-width: 350px) {
 
   .controller {
     width: 336px;
@@ -311,6 +311,32 @@ p {
   
   .superFamicomSpan {
     font-size: .4rem;
+  }
+
+  .screen {
+    width: 240px;
+    justify-content: center;
+  }
+
+  #score {
+    position: absolute;
+    bottom: 20px;
+    height: 200px;
+    font-size: .8rem;
+  }
+
+  #message {
+    width: 300px;
+    margin: auto;
+  }
+
+  #computerMoveDisplay {
+    height: 200px;
+  }
+
+  .displayIcon {
+    height: 140px;
+    width: 140px;
   }
 
 }
