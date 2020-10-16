@@ -129,12 +129,8 @@ body {
   background-color: #7e8086;
   border-radius: 15px;
   transform: rotate(-35deg);
-  font-size: .4rem;
 }
 
-p {
-  font-size: 8px;
-}
 
 #startGame button:hover {
   background-color: black;
@@ -238,7 +234,7 @@ p {
 
 /* RESPONSIVE LAYOUT */
 
-@media (min-width: 350px) {
+@media (max-width: 390px) {
 
   .controller {
     width: 336px;
@@ -283,6 +279,7 @@ p {
   #select, #startGame {
     padding-top: 80px;
     padding-right: 4px;
+    font-size: .4rem;
   }
 
   #select button, #startGame button {
@@ -290,7 +287,13 @@ p {
     border: 1px solid black;
     border-radius: 15px;
     transform: rotate(-35deg);
+    
   }
+
+  p {
+    font-size: 8px;
+  }
+  
 
   .colorButton {
     padding: .8rem;

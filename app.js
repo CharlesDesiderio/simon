@@ -26,6 +26,8 @@ let computerMoves = [];
 let numberOfChoices = 4;
 let currentTurn = 0;
 let colorsArray = ['#003DB5', '#C30110', '#108047', '#E4B522']
+let congrats = ['Awesome!', 'Yeah!', 'You got it!', 'Pwned.', 'Killin\' it!', '#B4D455!'];
+let audioArr = ['smw_swimming.wav', 'smw_fireball.wav', 'smw_kick.wav', 'smw_coin.wav']
 // Initial set of colors from flatuicolors.com
 // let colorsArray = ['#e74c3c', '#f1c40f', '#2980b9', '#27ae60', '#d35400', '#34495e', '#8e44ad']
 let isComputerTurn = false;
@@ -42,7 +44,7 @@ const gameLoop = () => {
   // $('#start').css('display', 'none') // Hide 'Start Game' button
   $('#message').empty() // Clear any previous 'Game Over' message
 
-  $('#message').html(`<h1>Game start!</h1>`)
+  //$('#message').html(`<h1>Game start!</h1>`)
 
   // Get computer move
   getComputerMove();
@@ -137,9 +139,11 @@ const choice = (event) => {
   if (isComputerTurn === true) {
     return;
   }
+  let buttonSound = new Audio(audioArr[parseInt($(event.target).attr('id'))])
+  buttonSound.play()
+  $('#message').html(`<h1>${congrats[Math.floor(Math.random() * congrats.length)]}!</h1>`)
   if (parseInt($(event.currentTarget).attr('id')) === computerMoves[currentTurn]) {
-
-    console.log(`yes! turn ${currentTurn}`)
+    
     currentTurn++;
     if (currentTurn === computerMoves.length) {
       console.log('end of turns')
@@ -152,6 +156,8 @@ const choice = (event) => {
     console.log(`you lose ${currentTurn}`)
     // Reset game here!
     $('#message').html(`<h1>Game Over. Score: ${score}</h1>`)
+    let gameOver = new Audio('smw_game_over.wav')
+    gameOver.play()
     $('#computerMoveDisplay').empty().append(`❌`)
     $('#game').empty()
     // Add score to array.
@@ -182,7 +188,12 @@ buildScores()
 $(() => {
   $('#startGame').on('click', () => {
     isComputerTurn = true;
-    gameLoop()
+    let newGameSound = new Audio('smw_1-up.wav')
+    newGameSound.play();
+    setTimeout(() => {
+
+      gameLoop()
+    }, 500)
   }) 
 })
 
