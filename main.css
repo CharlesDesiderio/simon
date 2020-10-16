@@ -64,14 +64,25 @@ body {
   color: white;
   box-sizing: border-box;
   border-radius: 50%;
-  box-shadow: -3px 0px 0 ;
+  border: none;
+  /* box-shadow: -3px 0px 0 ; */
+}
+
+
+/* I learned about the :active psuedoclass here: https://stackoverflow.com/questions/38377062/how-to-make-html-button-look-pressed-in-using-css */
+.colorButton:active {
+  filter: brightness(50%);
+}
+
+.colorButton:focus {
+  outline: none;
 }
 
 .colorButton:hover {
   /* filter: brightness(50%) !important; */
   /* box-sizing: border-box;
   border: 2px solid black; */
-  box-shadow: 0px 0px 5px 1px black;
+  /* box-shadow: 0px 0px 5px 1px black; */
 }
 
 .bg-div {
@@ -107,6 +118,10 @@ body {
   padding-top: 200px;
   padding-right: 10px;
   
+}
+
+#start:focus {
+  outline: none;
 }
 
 #select button, #startGame button {
@@ -168,8 +183,6 @@ body {
   font-size: .5rem;
   color: white;
 }
-
-
 
 #score {
   width: 150px;

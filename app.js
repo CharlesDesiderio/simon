@@ -65,7 +65,7 @@ const generateBoard = () => {
   for (let i = 0; i < numberOfChoices; i++) {
     let $bgDiv = $('<div>')
     $bgDiv.addClass('bg-div')
-    let $colorButton = $('<div>')
+    let $colorButton = $('<button>')
     $colorButton.addClass('colorButton')
     
     // Chose a color from array of colors, If there are more buttons than colors, pick a random color
@@ -143,12 +143,13 @@ const computerReplay = (move) => {
 
 // Manage input from player on color square click
 const choice = (event) => {
-
+  
+  
   if (isComputerTurn === true) {
     return;
   }
-  // console.log($(event.currentTarget).attr('id'))
   if (parseInt($(event.currentTarget).attr('id')) === computerMoves[currentTurn]) {
+
     console.log(`yes! turn ${currentTurn}`)
     currentTurn++;
     if (currentTurn === computerMoves.length) {
