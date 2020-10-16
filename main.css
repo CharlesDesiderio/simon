@@ -5,6 +5,9 @@
 body {
   font-family: 'Days One', sans-serif;
   padding-top: 1rem;
+  background-image: url('./bg.jpg');
+  background-size: cover;
+  background-attachment: fixed;
 }
 
 .controller {
@@ -67,7 +70,6 @@ body {
   border: none;
   /* box-shadow: -3px 0px 0 ; */
 }
-
 
 /* I learned about the :active psuedoclass here: https://stackoverflow.com/questions/38377062/how-to-make-html-button-look-pressed-in-using-css */
 .colorButton:active {
@@ -234,7 +236,128 @@ body {
 
 /* RESPONSIVE LAYOUT */
 
-@media (max-width: 390px) {
+
+/* HORIZONTAL AND TABLET LAYOUTS */
+
+@media (max-width: 830px) and (min-width: 381px) {
+  body {
+    display: flex;
+    justify-content: space-around;
+  }
+
+  .controller {
+    width: 336px;
+    height: 140px;
+  }
+
+  #middle {
+    width: 198px;
+    height: 126px;
+    left: 66px;
+  }
+
+  #left, #right {
+    width: 140px;
+    height: 140px;
+  }
+
+  .displayIcon {
+    height: 40px;
+    width: 40px;
+  }  
+
+  #game {
+    width: 80px;
+    height: 80px;
+    padding: 1.6rem;
+    column-gap: .6rem;
+  }
+
+  #select, #startGame {
+    display: inline-block;
+    padding-top: 80px;
+    padding-right: 4px;
+  }    
+
+  .arrow-box {
+    height: 20px;
+    width: 20px;
+    font-size: 18px;
+  }
+
+  #select, #startGame {
+    padding-top: 80px;
+    padding-right: 4px;
+    font-size: .4rem;
+  }
+
+  #select button, #startGame button {
+    padding: 2px 9px;
+    border: 1px solid black;
+    border-radius: 15px;
+    transform: rotate(-35deg);
+    
+  }
+
+  p {
+    font-size: 8px;
+  }
+  
+
+  .colorButton {
+    padding: .8rem;
+    margin: .4rem;
+  }
+
+  .label {
+    left: 25px;
+    width: 70%;
+    top: 8px;
+    font-size: .6rem;
+  }
+  
+  .famicomImage {
+    width: 24px;
+    margin: 4px;
+  }
+  
+  .superFamicomSpan {
+    font-size: .4rem;
+  }
+
+  .screen {
+    width: 240px;
+    justify-content: center;
+  }
+
+  #score {
+    position: absolute;
+    bottom: 41px;
+    left: 12px;
+    width: 55px;
+    height: 200px;
+    font-size: .8rem;
+  }
+
+  #message {
+    width: 300px;
+    margin: auto;
+  }
+
+  #computerMoveDisplay {
+    height: 200px;
+    width: 210px;
+    float: right;
+  }
+
+  .displayIcon {
+    height: 140px;
+    width: 140px;
+  }
+}
+
+
+@media (max-width: 380px) {
 
   .controller {
     width: 336px;

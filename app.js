@@ -27,6 +27,8 @@ let numberOfChoices = 4;
 let currentTurn = 0;
 let colorsArray = ['#003DB5', '#C30110', '#108047', '#E4B522']
 let congrats = ['Awesome!', 'Yeah!', 'You got it!', 'Pwned.', 'Killin\' it!', '#B4D455!'];
+
+// Used grepper's site to understand how to easily play audio: https://www.codegrepper.com/code-examples/fortran/jquery+play+audio
 let audioArr = ['smw_swimming.wav', 'smw_fireball.wav', 'smw_kick.wav', 'smw_coin.wav']
 // Initial set of colors from flatuicolors.com
 // let colorsArray = ['#e74c3c', '#f1c40f', '#2980b9', '#27ae60', '#d35400', '#34495e', '#8e44ad']
