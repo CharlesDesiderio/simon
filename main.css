@@ -10,6 +10,28 @@ body {
   background-attachment: fixed;
 }
 
+#rules {
+  position: absolute;
+  width: 20%;
+  left: 40%;
+  top: 20%;
+  background-color: white;
+  box-shadow: 5px 5px 0 0 black;
+  padding: 3rem;
+  z-index: 9;
+  display: none;
+}
+
+#showRules {
+  position: absolute;
+  top: 5px;
+  left: 5px;
+}
+#showRules img {
+
+  max-height: 40px;
+  max-width: 40px;
+}
 .controller {
   width: 840px;
   height: 350px;
@@ -244,6 +266,8 @@ body {
     display: flex;
     justify-content: space-around;
   }
+
+
 
   .controller {
     width: 336px;

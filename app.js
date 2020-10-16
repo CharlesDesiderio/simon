@@ -188,6 +188,15 @@ const resetGame = () => {
 buildScores()
 
 $(() => {
+
+  $('#showRules').on('click', () => {
+    $('#rules').css('display', 'block')
+  })
+
+  $('#byeModal').on('click', () => {
+    $('#rules').css('display', 'none')
+  })
+
   $('#startGame').on('click', () => {
     isComputerTurn = true;
     let newGameSound = new Audio('smw_1-up.wav')
