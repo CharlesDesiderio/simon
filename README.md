@@ -18,4 +18,4 @@ The grand scheme of the design was allowing multiple levels of difficulty, user-
 
 ## Link
 
-The link to the live site can be found at [https://charlesdesiderio.github.io/simon/](Github Pages)
+The link to the live site can be found at (https://charlesdesiderio.github.io/simon/)[Github Pages]
